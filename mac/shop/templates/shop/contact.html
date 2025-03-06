@@ -20,9 +20,15 @@
       <label for="desc">How May We Help You?</label>
       <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
-
-
+{% endblock %}
+{% block js %}
+  <script>
+   {% if thank %}
+        alert('Thanks For Contacting Us We Will Get You Soon!')
+        document.location = "/shop";
+        {% endif %}
+  </script>
 {% endblock %}
