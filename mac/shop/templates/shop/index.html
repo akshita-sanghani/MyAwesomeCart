@@ -125,10 +125,17 @@ function updatePopover(cart)
         popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + cart[item][0] + '<br>';
         i = i+1;
     }
-    popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id='clearCart'>Clear Cart</button>"
+    popStr = popStr + "</div> <a href='/shop/checkout' class='btn btn-primary'>Checkout</a> <a id='clearCart' class='btn btn-primary' role='button'>Clear Cart</a>"
     console.log(popStr);
+    $('#popcart').popover('dispose');
     document.getElementById('popcart').setAttribute('data-content', popStr);
     $('#popcart').popover('show');
+     setTimeout(() => {
+     let clearCartBtn = document.getElementById("clearCart");
+     if (clearCartBtn) {
+     clearCartBtn.addEventListener("click", clearCart);
+     }
+     }, 500);
 }
 
 function clearCart(){
